@@ -1,8 +1,19 @@
-import {Container, Nav, NavDropdown} from "react-bootstrap";
+import {Button, Container, Nav, NavDropdown} from "react-bootstrap";
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 
 function Navbar() {
+
+    const lclStorage = localStorage.getItem("user")
+    const user = lclStorage ? JSON.parse(lclStorage) : null;
+    const navigate = useNavigate();
+    const handleClick = (event) => {
+        event.preventDefault();
+        localStorage.clear();
+        navigate("/login")
+    }
+
     return (
         <>
             <Container>
@@ -13,8 +24,14 @@ function Navbar() {
                         <Nav.Link className="text-white" href="/request">Requests</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link className="text-white hover:text-blue-300" href="/login">Login</Nav.Link>
-                        <Nav.Link className="text-white" href="/register">Register</Nav.Link>
+                    {!user || !user.isLogin ? (
+                        <>
+
+                                <Nav.Link className="text-white hover:text-blue-300" href="/login">Login</Nav.Link>
+                                <Nav.Link className="text-white" href="/register">Register</Nav.Link>
+
+                        </>
+                    ) : <Button onClick={handleClick}>Logout</Button>}
                     </Nav>
                 </div>
             </Container>

@@ -10,20 +10,20 @@ import Register from "./component/Register.jsx";
 
 function App() {
 
+
+
   return (
     <>
     <Navbar/>
-     <BrowserRouter>
-         <Routes>
-             <Route path="/" element={<Home/>}/>
-             <Route path="/home" element={<Home/>}/>
-             <Route path="/inventory" element={<Inventory/>}/>
-             <Route path="/request" element={<ConsumerRequest/>} />
-             <Route path="/register" element={<Register/>} />
-             <Route path="/login" element={<Login/>} />
-         </Routes>
-     </BrowserRouter>
-    </>
+     <Routes>
+         <Route path="/" element={<Home/>}/>
+         <Route path="/home" element={<Home/>}/>
+         <Route path="/inventory" element={<Inventory/>}/>
+         <Route path="/request" element={<ConsumerRequest/>} />
+         <Route path="/register" element={<Register />} />
+         <Route path="/login" element={<Login />} />
+     </Routes>
+</>
   )
 }
 

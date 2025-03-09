@@ -8,3 +8,6 @@ export function doGet (url){
 }
 
 
+export function doPost(url, data) {
+    return axios.post(BASE_URL_API + url, data)
+}
